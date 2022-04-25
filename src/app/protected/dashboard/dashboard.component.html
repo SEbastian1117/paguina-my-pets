@@ -1,0 +1,43 @@
+
+  <mat-sidenav-container fullscreen class="bg">
+    <mat-sidenav #sidenav mode="push" class="bgl">
+      <mat-toolbar class="bglo">
+        <div class="space"></div>
+        <button mat-icon-button class="btnh" (click)="sidenav.toggle()">
+          <mat-icon class="huella">pets</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <mat-nav-list >
+       <div class="log"><img class="img-l" src="/assets/img/imagenes-protected/isonewsvg.svg" alt=""></div>
+      </mat-nav-list>
+
+      <mat-nav-list  class="lish"
+      *ngFor="let item of items"
+      [routerLink]="[ item.route]"
+      routerLinkActive="active"
+      >
+        <a mat-list-item (click)="sidenav.toggle()">
+          <mat-icon  mat-list-icon><img class="icondog" src="{{ item.icon }}" alt="icon-perrito"></mat-icon>
+          <span class="spanfont"> {{ item.text }} </span>
+        </a>
+      </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-toolbar class="bgnav">
+      <button mat-icon-button class="btnh text-white" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="space"></div>
+      <span  mat-list-item 
+ (click)="logout()" >
+       <mat-icon mat-list-icon class="text-white">logout</mat-icon>
+     </span>
+     <div class="mbs">
+       <span class="logto">logout</span></div>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </mat-sidenav-container>
